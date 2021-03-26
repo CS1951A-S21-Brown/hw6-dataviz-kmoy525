@@ -8,7 +8,7 @@
         <!--Feel free to add more CSS files as needed-->
         <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
     </head>
-<body>
+    <body>
     <div class="header">
         <h3>Assignment 6 &laquo; Data Visualization Dashboard &raquo;</h3>
     </div>
@@ -16,13 +16,90 @@
     <div class="row">
         <div class="col-lg-6">
             <div id="graph1"></div>
-            <div id="graph2"></div><br/>
+            <div id="graph2"></div>
+            <div class="controls">
+                <input type="text" id="attrInput" placeholder="Year" aria-label="Year"
+                       maxlength="4">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="button" onclick="setYear()">Submit</button></div>
+                <p style="font-size: 12px;">
+                Note: if you put an invalid year, the graph will be blank.
+            </div>
         </div>
         <div class="col-lg-6">
             <div id="graph3"></div>
         </div>
     </div>
+    <div class="row">
+        <p style="font-size: 15px;">
+            Written Questions:
+        </p>
+        <p style="font-size: 12px;">
+            1) The bar graph (Number of Titles per Genre) shows the top 10 most popular genre on Netflix across movies
+            and TV shows (it does not separate between the two). This is a sample of the count for each genre on Netflix,
+            as this plot doesn't show all the number of moviess, as there are 42 genres in total, and that would be too
+            much information to fit coherently on a plot of this size. The box and whiskers plot shows the average
+            runtime of the movie for a given year (automatically 2019, but can change the year using the text box). The
+            average is represented in two ways: the median shown but the center vertical line of the box and whiskers
+            plot, and the mean shown by the red vertical line. The mean was shown to be included as that is the usually
+            the intent of average, however, in some cases, especially years with fewer movies, the average can be skewed
+            by outliers, and so the median was also represented as it is more resilient to these outliers. Additionally,
+            the individual points (minus the outliers) for every movie in the corresponding year is also represented.
+            Lastly, the network graph shows the 20 actors that are in most Netflix movies with other actors who also
+            are also in the top 20 of the number of Netflix movies. Actors in movies with just them as the cast were not
+            counted. Only the top 20 were chosen, as with more actors, there were too many nodes and links to make the
+            graph easily comprehensible.
+            <br/><br/>
+            2) One of the reasons why D3 was helpful was its breadth of graphs available to choose from to represent
+            data, including bar and line graphs, scatter plots, heatmaps, flow-type charts, etc that are already
+            implemented and well-documented (for the most part). By having this many ways to visualize data, any nuance
+            in the data could potentially be visualized. Other reasons for why D3 was helpful for visualization includes
+            the interactivity of elements, for example tool tips. In many cases, there is too much data to include in
+            the graph, however, by implementing tool tips, the user can see more information one bit at a time, without
+            affecting the visibility of other aspects of the chart. Lastly, the colors available on D3 improved
+            visualization, for example, the ability to change the color of the bars in the graph to be a gradient helps
+            distinguish between each bar.
+            <br/><br/>
+            3) D3 is not a great tool for beginners looking to make visualization, especially if you do not know
+            J avaScript. Learning the syntax for JavaScript really complicated making these visualizations. For example,
+            it ended up being easier for me to parse through the data for the bar and network graph using python than
+            figuring out Javascript on top of D3. Additionally, D3 itself is hard to learn: it uses very specific syntax
+            that is not very intuitive, and often I needed to look at several examples of one type of graph before
+            understanding how to implement the visualization. Lastly, on top of needing to know JavaScript, the
+            formatting of the charts in this assignment needed to be done through CSS and HTML, which further
+            complicated the making of the charts. For example, getting the text of the charts to lie exactly where I
+            wanted required much trial and error with its positioning. Overall, this really complicated and prolonged
+            this assignment.
+            <br/><br/>
+            4) While my dashboard is not inaccessible based on these readings, there could be many things that could be
+            improved. There is generally good color contrasts between the visualizations and its background. There are
+            no visualizations on this dashboard that are completely reliant on color to understand them (while the
+            mean calculated for the box and whiskers plot is in a different color, it is also longer than other
+            vertical lines so it can be distinguished). This makes the dashboard accessible for color blind users. This
+            dashboard, however, is not very accessible for assistive technology. There are hover overlaps for the box
+            and whiskers plot and the network graph. Additionally, dropdown inputs are preferred for compatibility with
+            assistive technology, and I use a text box.
+            <br/><br/>
+            5) One stage of my design that I could have taken steps to make the dashboard more accessible to all
+            audiences, specifically those who use assistive technology, was my decision to use hover overlaps,
+            especially in the case of the network graph. For the box and whisker plot, the overall point of the graph
+            is able to be seen without the tool tips, but without the tool tips for the network graph, it is impossible
+            to understand which nodes correspond to which actors/actress. The decision to use tool tips was due to the
+            assignment requirement, but also, due to the the number of nodes in the network graph. It would be hard to
+            label each node without making the visualization too cluttered (and hard to understand) or the labels too
+            small (which will also make it hard to understand). Additionally, a dropdown menu could have been
+            implemented instead of the textbox to change the year for the box and whisker plot, but given my general
+            lack of experience with JavaScript/HTML/CSS, this was personally too hard for me to implement.
+            <br/><br/>
+            Note: I made the Runtime of Movies chart into a dynamic stats calculation as it is able to show more
+            information about a given year without making the visualization too busy. It is statistical because
+            recalculates box plot whiskers, quartiles, and mean for each year and visualizes it.
+        </p>
     <!--Feel free to add more JavaScript files as needed-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
-</body>
+    <script type="text/javascript" src="bargraph.js"></script>
+    <script type="text/javascript" src="boxandwhisker.js"></script>
+    <script type="text/javascript" src="graph.js"></script>
+    </body>
 </html>

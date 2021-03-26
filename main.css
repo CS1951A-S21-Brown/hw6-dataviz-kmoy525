@@ -10,3 +10,24 @@
 }
 
 /* Include any custom CSS styling here! */
+
+
+.controls {
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+.tooltip {
+    position: absolute;
+    }
+
+.row {
+    text-align: left;
+    max-width: 1440px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
